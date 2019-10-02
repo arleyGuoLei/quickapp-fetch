@@ -1,0 +1,33 @@
+{
+  "name": "quickapp-fetch",
+  "version": "0.0.1",
+  "description": "快应用请求封装实践, 支持请求超时, GET参数, 请求拦截器, 响应拦截器, 条件重试等",
+  "main": "lib/fetch.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "quickapp",
+    "aqa-fetch",
+    "快应用"
+  ],
+  "author": "arley",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@mi/eslint-config-mcfe-base": "^2.1.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^6.5.1",
+    "eslint-plugin-flowtype": "^4.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.6.2",
+    "@babel/runtime-corejs2": "^7.6.2"
+  }
+}
