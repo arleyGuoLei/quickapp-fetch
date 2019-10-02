@@ -18,7 +18,7 @@ export default class Service {
     this.config = {
       timeout: 0,
       retry: 0,
-      successCode: 200,
+      successCode: 0,
       debug: false,
       retryCondition: () => (false), // 重试的条件, 返回true为重试, 返回false不重试
       ...config,
@@ -107,7 +107,7 @@ export default class Service {
           /**
            * 成功的code 不等于服务器code
            */
-          if (successCode !== res.code) {
+          if (successCode !== 0 && successCode !== res.code) {
             return reject(codeError(fullConfig))
           }
 
@@ -117,6 +117,7 @@ export default class Service {
           const data = buildHookResponse({ ...res }, this.interceptors.response)
           resolve(data)
         }).catch(e => {
+          Log(e, debug, '请求发生错误')
           reject(e)
         })
     })

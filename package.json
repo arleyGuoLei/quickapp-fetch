@@ -3,8 +3,15 @@
   "version": "0.0.1",
   "description": "快应用请求封装实践, 支持请求超时, GET参数, 请求拦截器, 响应拦截器, 条件重试等",
   "main": "lib/fetch.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arleyGuoLei/quickapp-fetch"
   },
   "keywords": [
     "quickapp",
@@ -24,10 +31,9 @@
     "eslint-plugin-flowtype": "^4.3.0",
     "eslint-plugin-import": "^2.18.2",
     "webpack": "^4.41.0",
-    "webpack-cli": "^3.3.9"
-  },
-  "dependencies": {
+    "webpack-cli": "^3.3.9",
     "@babel/runtime": "^7.6.2",
     "@babel/runtime-corejs2": "^7.6.2"
-  }
+  },
+  "dependencies": {}
 }

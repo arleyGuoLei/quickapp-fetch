@@ -11,9 +11,11 @@ import { timeoutError } from '../util/error'
  */
 export const timeoutPromise = (overtime, config) => {
   return new Promise((reslove, reject) => {
-    setTimeout(() => {
-      reject(timeoutError(overtime, config))
-    }, overtime)
+    if (overtime !== 0) {
+      setTimeout(() => {
+        reject(timeoutError(overtime, config))
+      }, overtime)
+    }
   })
 }
 
@@ -54,10 +56,10 @@ export const requestPromise = config => {
  * @param {Array} interceptor 拦截器函数数组
  */
 export const buildHookRequest = (config, interceptor = []) => {
-  interceptor.forEach(hook => {
+  interceptor.forEach((hook, index) => {
     config = hook({ ...config })
+    Log(JSON.parse(JSON.stringify(config)), (config.debug || false), `请求拦截器${index + 1}处理之后的配置项`)
   })
-  Log(config, (config.debug || false), '所有请求拦截器处理之后的配置项')
   return config
 }
 
@@ -70,9 +72,9 @@ export const buildHookResponse = (res, interceptor = []) => {
   Log(res, ((res.config || {}).debug || false), '程序处理初次传入响应拦截器的值')
 
   let data = res
-  interceptor.forEach(hook => {
+  interceptor.forEach((hook, index) => {
     data = hook({ ...data })
+    Log(JSON.parse(JSON.stringify(data)), ((res.config || {}).debug || false), `响应拦截器${index + 1}处理之后的配置项`)
   })
-  Log(data, ((res.config || {}).debug || false), '所有请求拦截器处理之后的配置项')
   return data
 }
